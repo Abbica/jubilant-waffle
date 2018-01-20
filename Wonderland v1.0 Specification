@@ -37,7 +37,7 @@ Design elements:
   Soldier D6, Hedgehog, Flamingo, Butterfly.
   
 - Items: mushroom, potion (growth, shrink, teleport, death), keys, doors, cake, hedgehog, flamingo, rabbit's watch,
-  catepillar's pipe, red rose, white rose, ladder, shrub, Alice's bag (inventory), mirror (health, teleportation).
+  catepillar's pipe, red rose, white rose, ladder, Alice's bag (inventory), mirror (health, teleportation).
 
 
 Game Flow:
@@ -48,6 +48,7 @@ Game Flow:
 - Choices always given: check inventory, check health-mirror, drink death potion.
 - Note that the player does not always get a choice in picking their paths. Some paths only becomes available AFTER they
   have interacted with certain items, or is of a suitable size.
+- The final path of escape can only be opened IF the player has obtained the Rabbit's watch.
 
 
 Design details:
@@ -65,7 +66,8 @@ Design details:
   - RQC blue -> chessfield or RQC hall
   - RQC purple -> RQC blue or Alice's garden
   - RQC hall -> cottage bedroom or RQC garden
-  - [All rooms connect to the chessfield if White Rose is activated!]
+  - [All rooms goes to the chessfield if White Rose is activated!]
+  - [All rooms except the final room can be accessed if the Teleportation Mirror or if the teleport potion is activated!]
 
 e.g. of possible paths:
   i. Forest -> grassland -> RwB -> cottage main -> cottage bedroom -> HTP -> RQC blue room -> chessfield -> HTP -> RQC garden
@@ -89,23 +91,41 @@ e.g. of possible paths:
   - Alice's Garden: <none>
   
 3. Items in rooms:
-  - Forest: 
-  - Grassland:  
-  - Chessfield: White rose, if interact with White Queen
-  - HTP: 
-  - RwB: 
-  - Cottage main: 
-  - Cottage bedroom: 
-  - RQC garden: Red rose, 
-  - RQC hall: 
-  - RQC blue: 
-  - RQC pink: 
-  - RQC purple: pipe, if interact with Butterfly
+  - Forest: shrink pot
+  - Grassland: <none>
+  - Chessfield: White rose, if interact with White Queen. 
+  - HTP: cake, door B, door C, door A, door D
+  - RwB: mushroom, pipe,
+  - Cottage main: door C, ladder, growth pot
+  - Cottage bedroom: door Q, key P
+  - RQC garden: Red rose, flamingo, hedgehog, growth pot, door P, door A
+  - RQC hall: door R, door A
+  - RQC blue: shrink pot, key Q, door H, door F
+  - RQC pink: flamingo, door H
+  - RQC purple: pipe, if interact with Butterfly, door B
   - Alice's Garden: Rabbit's Watch
 
-
-
-
-
-
+4. Item effects: 
+  Shrink pot: health / 2
+  Growth pot: health * 2
+  Death pot: Reset game, set new health to 70% if player chooses to continue
+  teleport pot: move to any room in game except for final room.
+  mushroom: health - 10
+  cake: health + 20
+  Red rose: health -2 for every subsequent room entered if interacted with in RQC garden
+  White rose: teleport to chessfield
+  flamingo: play golf, health + 5
+  hedgehog: play gold, health - 5
+  ladder: remove from Humpty Dumpty. Get growth pot
+  pipe: if used in RQC purple WITHOUT watch, moves to HTP. If used with watch in RQC purple, escapes to Alice's garden. 
+  door A: opens to RQC garden
+  door C: opens to cottage bedroom with KEY Q
+  door B: opens to RQC blue
+  door D: opens to RQC garden
+  door F: opens to chessfield
+  door H: opens to RQC hall
+  door P: <none> locked.
+  door Q: opens to RQC purple if KEY Q
+  door R: opens to RwB
+  
 
