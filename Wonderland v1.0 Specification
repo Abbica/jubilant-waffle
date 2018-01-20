@@ -1,0 +1,46 @@
+Specification for Wonderland Text-Adventure Game:
+v1.0
+19.01.2018
+
+Game idea:
+A simple text-adventure game based on the story of 'Alice in Wonderland'.
+
+The player plays as the main character Alice, as she moves into different places (rooms) in Wonderland. 
+Once in a room, she has the choice to inspect her surroundings and interact with characters and items.
+These interactions may result in:
+- changes to her health 
+- changes in her physical size (also doubling or halving her health, and unlock access to certain items)
+- movement to a different room in the game
+
+With items, she may have the option of keeping them in her inventory to be used at a later stage in the game.
+
+Her health decreases the longer she spends in Wonderland. This is not measured by the length of time spent in 
+the gameplay by the player, but is affected by the number and type of rooms she has been in.
+
+Providing that her health remains above a set threshold, and she has gone through all the required interactions in the 
+correct sequence, Alice is allowed to escape from Wonderland, thereby winning the game. Otherwise, if either her health 
+has expired or a fatal sequence of choices has been chosen, the game will restart and Alice is indefinitely trapped in 
+Wonderland. Here, the player will restart at 70% of the initial health.
+
+However at any point in the game, the player may choose to end the game by drinking a 'Death Potion'. This is provided at
+the initial stage of the game when Alice first enters Wonderland.
+
+(Optional: A simple scoring system based on the choices made in the gameplay?)
+
+
+Design elements:
+
+- Room types: forest, grass-land, chess-field, river with bridge, Hatter's tea party, cottage (living room, bedroom), 
+  Red Queen Castle (garden, hall, pink room, blue room, purple room).
+  
+- Characters: White Rabbit, Cheshire Cat, Red Queen, White Queen, Mad Hatter, Humpty Dumpty, Catepillar, Soldier A3, 
+  Soldier D6, Hedgehog, Flamingo.
+  
+- Items: mushroom, potion (growth, shrink, teleport, death), keys, doors, cake, hedgehog, flamingo, rabbit's watch,
+  catepillar's pipe, red rose, white rose, ladder, shrub.
+  
+
+
+
+
+
