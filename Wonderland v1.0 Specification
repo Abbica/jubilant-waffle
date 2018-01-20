@@ -20,7 +20,7 @@ the gameplay by the player, but is affected by the number and type of rooms she 
 Providing that her health remains above a set threshold, and she has gone through all the required interactions in the 
 correct sequence, Alice is allowed to escape from Wonderland, thereby winning the game. Otherwise, if either her health 
 has expired or a fatal sequence of choices has been chosen, the game will restart and Alice is indefinitely trapped in 
-Wonderland. Here, the player will restart at 70% of the initial health.
+Wonderland. Here, the player will restart at 69% of the initial health.
 
 However at any point in the game, the player may choose to end the game by drinking a 'Death Potion'. This is provided at
 the initial stage of the game when Alice first enters Wonderland.
@@ -30,15 +30,80 @@ the initial stage of the game when Alice first enters Wonderland.
 
 Design elements:
 
-- Room types: forest, grass-land, chess-field, river with bridge, Hatter's tea party, cottage (living room, bedroom), 
-  Red Queen Castle (garden, hall, pink room, blue room, purple room).
+- Room types: forest, grassland, chessfield, river with bridge [RwB], Hatter's tea party [HTP], cottage (main, bedroom), 
+  Red Queen Castle [RQC] (garden, hall, pink room, blue room, purple room), Alice's garden
   
 - Characters: White Rabbit, Cheshire Cat, Red Queen, White Queen, Mad Hatter, Humpty Dumpty, Catepillar, Soldier A3, 
-  Soldier D6, Hedgehog, Flamingo.
+  Soldier D6, Hedgehog, Flamingo, Butterfly.
   
 - Items: mushroom, potion (growth, shrink, teleport, death), keys, doors, cake, hedgehog, flamingo, rabbit's watch,
-  catepillar's pipe, red rose, white rose, ladder, shrub.
+  catepillar's pipe, red rose, white rose, ladder, shrub, Alice's bag (inventory), mirror (health, teleportation).
+
+
+Game Flow:
+
+- Character wakes up in room Forest. Next to her is a bag (inventory) which contains a small mirror that tells her health,
+  and the Death Potion.
+- initialise Alice's health at 96%.
+- Choices always given: check inventory, check health-mirror, drink death potion.
+- Note that the player does not always get a choice in picking their paths. Some paths only becomes available AFTER they
+  have interacted with certain items, or is of a suitable size.
+
+
+Design details:
+
+1. Room connections:
+  - Forest -> grassland or RwB or chessfield
+  - Grassland -> RwB or forest 
+  - RwB -> chessfield or cottage main or grassland
+  - Chessfield -> HTP or grassland
+  - HTP -> RQC garden or RQC blue room or cottage bedroom or RwB
+  - cottage bedroom -> RQC purple room or cottage main
+  - cottage main -> cottage bedroom or HTP  
+  - RQC garden -> RQC pink or RwB
+  - RQC pink -> RQC hall
+  - RQC blue -> chessfield or RQC hall
+  - RQC purple -> RQC blue or Alice's garden
+  - RQC hall -> cottage bedroom or RQC garden
+  - [All rooms connect to the chessfield if White Rose is activated!]
+
+e.g. of possible paths:
+  i. Forest -> grassland -> RwB -> cottage main -> cottage bedroom -> HTP -> RQC blue room -> chessfield -> HTP -> RQC garden
+  -> RQC pink room -> RQC hall -> cottage bedroom -> RQC purple room -> Alice's garden
   
+  ii. Forest -> chessfield -> HTP -> RQC blue -> RQC hall -> cottage bedroom -> RQC purple -> Alice's garden {Shortest Path!}
+
+2. Characters in rooms:
+  - Forest: Rabbit 
+  - Grassland: Cat 
+  - Chessfield: White Queen
+  - HTP: Hatter, Rabbit
+  - RwB: Catepillar
+  - Cottage main: Humpty Dumpty
+  - Cottage bedroom: <none>
+  - RQC garden: Hedgehog, Flamingo, Solider A3, Soldier D6, Red Queen
+  - RQC hall: Rabbit, Red Queen
+  - RQC blue: Cat
+  - RQC pink: <none>
+  - RQC purple: Butterfly
+  - Alice's Garden: <none>
+  
+3. Items in rooms:
+  - Forest: 
+  - Grassland:  
+  - Chessfield: White rose, if interact with White Queen
+  - HTP: 
+  - RwB: 
+  - Cottage main: 
+  - Cottage bedroom: 
+  - RQC garden: Red rose, 
+  - RQC hall: 
+  - RQC blue: 
+  - RQC pink: 
+  - RQC purple: pipe, if interact with Butterfly
+  - Alice's Garden: Rabbit's Watch
+
+
 
 
 
